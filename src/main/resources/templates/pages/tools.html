@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+    <title>Tools</title>
 </head>
-<body>
+<body class="bg-black text-white overflow-x-hidden">
 
+<nav th:replace="~{fragments/nav :: nav}"></nav>
+
+<!-- 히어로 -->
+<section class="h-screen flex flex-col justify-center px-20">
+    <p class="text-gray-500 tracking-widest text-sm mb-4">WHAT I USE</p>
+    <h1 class="text-8xl font-bold hero-title">사용 툴</h1>
+</section>
+
+<!-- 디자인 툴 -->
+<section class="px-20 py-32">
+    <h2 class="text-2xl font-bold text-gray-500 mb-10 tracking-widest">DESIGN</h2>
+    <div id="design-tools" class="grid grid-cols-4 gap-6 mb-32"></div>
+
+    <h2 class="text-2xl font-bold text-gray-500 mb-10 tracking-widest">DEVELOPMENT</h2>
+    <div id="dev-tools" class="grid grid-cols-4 gap-6"></div>
+</section>
+
+<script src="/js/main.js"></script>
+<script>
+    async function loadTools() {
+        const res = await fetch('/api/techstack');
+        const data = await res.json();
+
+        const designGrid = document.getElementById('design-tools');
+        const devGrid = document.getElementById('dev-tools');
+
+        data.forEach(item => {
+            const card = `
+                    <div class="border border-zinc-800 p-8 hover:border-white transition duration-300">
+                        <p class="text-gray-600 text-xs mb-3 tracking-widest">${item.type}</p>
+                        <h3 class="text-2xl font-bold">${item.name}</h3>
+                    </div>
+                `;
+            if (item.type === '디자인툴') {
+                designGrid.innerHTML += card;
+            } else {
+                devGrid.innerHTML += card;
+            }
+        });
+    }
+    loadTools();
+</script>
 </body>
 </html>

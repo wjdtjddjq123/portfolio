@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+    <title>Works</title>
 </head>
-<body>
+<body class="bg-black text-white overflow-x-hidden">
 
+<nav th:replace="~{fragments/nav :: nav}"></nav>
+
+<!-- 히어로 -->
+<section class="h-screen flex flex-col justify-center px-20">
+    <p class="text-gray-500 tracking-widest text-sm mb-4">WHAT I DO</p>
+    <h1 class="text-8xl font-bold hero-title">업무 영역</h1>
+</section>
+
+<!-- 카테고리 목록 -->
+<section class="px-20 py-32">
+    <div id="category-list" class="flex flex-col gap-0"></div>
+</section>
+
+<script src="/js/main.js"></script>
+<script>
+    async function loadCategories() {
+        const res = await fetch('/api/category');
+        const data = await res.json();
+        const list = document.getElementById('category-list');
+        data.forEach((item, index) => {
+            list.innerHTML += `
+                    <div class="border-t border-zinc-800 py-10 flex justify-between items-center group cursor-pointer hover:px-6 transition-all duration-300">
+                        <div class="flex items-center gap-10">
+                            <span class="text-gray-600 text-sm">${String(index + 1).padStart(2, '0')}</span>
+                            <h2 class="text-4xl font-bold group-hover:text-gray-300 transition">${item.name}</h2>
+                        </div>
+                        <span class="text-gray-600 group-hover:text-white transition">→</span>
+                    </div>
+                `;
+        });
+    }
+    loadCategories();
+</script>
 </body>
 </html>

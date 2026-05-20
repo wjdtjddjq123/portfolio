@@ -1,15 +1,10 @@
 spring:
-  application:
-    name: portfolio
-
   datasource:
-    url: jdbc:postgresql://localhost:5432/portfolio
-    username: postgres
-    password: postgres
+    url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+    show-sql: false
