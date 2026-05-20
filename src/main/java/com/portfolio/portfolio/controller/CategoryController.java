@@ -1,6 +1,7 @@
 package com.portfolio.portfolio.controller;
 
 import com.portfolio.portfolio.domain.Category;
+import com.portfolio.portfolio.dto.CategoryDto;
 import com.portfolio.portfolio.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,10 @@ public class CategoryController {
     @GetMapping
     public List<Category> findAll() {
         return categoryService.findAll();
+    }
+
+    @PostMapping
+    public Category save(@RequestBody CategoryDto dto) {
+        return categoryService.save(dto);
     }
 }

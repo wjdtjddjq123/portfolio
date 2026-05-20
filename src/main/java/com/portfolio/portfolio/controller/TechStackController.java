@@ -1,6 +1,7 @@
 package com.portfolio.portfolio.controller;
 
 import com.portfolio.portfolio.domain.TechStack;
+import com.portfolio.portfolio.dto.TechStackDto;
 import com.portfolio.portfolio.service.TechStackService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,10 @@ public class TechStackController {
     @GetMapping
     public List<TechStack> findAll() {
         return techStackService.findAll();
+    }
+
+    @PostMapping
+    public TechStack save(@RequestBody TechStackDto dto) {
+        return techStackService.save(dto);
     }
 }

@@ -1,6 +1,7 @@
 package com.portfolio.portfolio.controller;
 
 import com.portfolio.portfolio.domain.Image;
+import com.portfolio.portfolio.dto.ImageDto;
 import com.portfolio.portfolio.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,10 @@ public class ImageController {
     @GetMapping
     public List<Image> findAll() {
         return imageService.findAll();
+    }
+
+    @PostMapping
+    public Image save(@RequestBody ImageDto dto) {
+        return imageService.save(dto);
     }
 }

@@ -15,9 +15,15 @@ public class Company {
     private Long id;
 
     @Column(nullable = false)
-    private String name;        // 예: 홍길동커뮤니케이션
+    private String name;
 
-    private String period;      // 예: 2020.03 ~ 2022.06
+    private String period;
 
-    private String description; // 업체 설명
+    private String description;
+
+    public Company(String name, String period, String description) {
+        this.name = name;
+        this.period = period;
+        this.description = description;
+    }
 }

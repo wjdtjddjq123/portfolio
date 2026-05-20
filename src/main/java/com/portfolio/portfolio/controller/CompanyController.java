@@ -1,6 +1,7 @@
 package com.portfolio.portfolio.controller;
 
 import com.portfolio.portfolio.domain.Company;
+import com.portfolio.portfolio.dto.CompanyDto;
 import com.portfolio.portfolio.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,5 +18,10 @@ public class CompanyController {
     @GetMapping
     public List<Company> findAll() {
         return companyService.findAll();
+    }
+
+    @PostMapping
+    public Company save(@RequestBody CompanyDto dto) {
+        return companyService.save(dto);
     }
 }

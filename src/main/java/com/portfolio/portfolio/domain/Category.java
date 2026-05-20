@@ -15,11 +15,17 @@ public class Category {
     private Long id;
 
     @Column(nullable = false)
-    private String name;        // 예: UIUX, WEB DESIGN
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    private Category parent;    // 상위 카테고리 (null이면 최상위)
+    private Category parent;
 
-    private Integer sortOrder;  // 정렬 순서
+    private Integer sortOrder;
+
+    public Category(String name, Category parent, Integer sortOrder) {
+        this.name = name;
+        this.parent = parent;
+        this.sortOrder = sortOrder;
+    }
 }

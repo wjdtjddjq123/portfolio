@@ -15,12 +15,18 @@ public class Image {
     private Long id;
 
     @Column(nullable = false)
-    private String originalName;  // 원본 파일명
+    private String originalName;
 
     @Column(nullable = false)
-    private String storedUrl;     // S3 저장 URL
+    private String storedUrl;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;    // 어떤 카테고리의 이미지인지
+    private Category category;
+
+    public Image(String originalName, String storedUrl, Category category) {
+        this.originalName = originalName;
+        this.storedUrl = storedUrl;
+        this.category = category;
+    }
 }

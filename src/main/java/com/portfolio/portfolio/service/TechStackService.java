@@ -1,6 +1,7 @@
 package com.portfolio.portfolio.service;
 
 import com.portfolio.portfolio.domain.TechStack;
+import com.portfolio.portfolio.dto.TechStackDto;
 import com.portfolio.portfolio.repository.TechStackRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,10 @@ public class TechStackService {
 
     public List<TechStack> findAll() {
         return techStackRepository.findAll();
+    }
+
+    public TechStack save(TechStackDto dto) {
+        TechStack techStack = new TechStack(dto.getName(), dto.getType());
+        return techStackRepository.save(techStack);
     }
 }

@@ -15,8 +15,13 @@ public class TechStack {
     private Long id;
 
     @Column(nullable = false)
-    private String name;        // 예: 포토샵, 일러스트
+    private String name;
 
     @Column(nullable = false)
-    private String type;        // 예: 디자인툴, 개발툴
+    private String type;
+
+    public TechStack(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
 }
