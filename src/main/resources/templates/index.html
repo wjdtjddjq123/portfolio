@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}">
+    <title>Portfolio</title>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+<nav th:replace="~{fragments/nav :: nav}"></nav>
+
+<!-- 히어로 섹션 -->
+<section id="hero" class="h-screen flex flex-col justify-center items-center text-center px-10">
+    <p class="text-gray-500 tracking-widest text-sm mb-6 hero-sub">DESIGNER & DEVELOPER</p>
+    <h1 class="text-7xl font-bold leading-tight hero-title">안녕하세요.<br>저는 디자이너입니다.</h1>
+    <p class="mt-8 text-gray-400 text-lg hero-desc">스크롤을 내려 포트폴리오를 확인하세요.</p>
+    <div class="mt-16 animate-bounce">
+        <span class="text-gray-500 text-sm tracking-widest">SCROLL DOWN ↓</span>
+    </div>
+</section>
+
+<!-- 업무 섹션 -->
+<section id="works" class="min-h-screen flex flex-col justify-center px-20 py-32">
+    <p class="text-gray-500 tracking-widest text-sm mb-4">WHAT I DO</p>
+    <h2 class="text-6xl font-bold mb-20 section-title">업무 영역</h2>
+    <div class="grid grid-cols-3 gap-10" id="works-grid"></div>
+</section>
+
+<!-- 업체 섹션 -->
+<section id="company" class="min-h-screen flex flex-col justify-center px-20 py-32 bg-zinc-950">
+    <p class="text-gray-500 tracking-widest text-sm mb-4">WHERE I WORKED</p>
+    <h2 class="text-6xl font-bold mb-20 section-title">경력</h2>
+    <div id="company-list" class="flex flex-col gap-8"></div>
+</section>
+
+<!-- 툴 섹션 -->
+<section id="tools" class="min-h-screen flex flex-col justify-center px-20 py-32">
+    <p class="text-gray-500 tracking-widest text-sm mb-4">WHAT I USE</p>
+    <h2 class="text-6xl font-bold mb-20 section-title">사용 툴</h2>
+    <div id="tools-grid" class="grid grid-cols-4 gap-6"></div>
+</section>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
